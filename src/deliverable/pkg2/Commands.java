@@ -46,6 +46,7 @@ public class Commands {
     public void decideCommand(String command, Room room, Player player){
         
         int currentRoom = player.getCurrentRoom();
+            
         // updateRoom() is written so that is will update the room appropiately.
         if(command.equalsIgnoreCase("N") || command.equalsIgnoreCase("S")){
             player.updateRoom(command, room);
@@ -53,7 +54,9 @@ public class Commands {
         else if(command.equalsIgnoreCase("L")){
             // Check to see if there is something in this room
             if(room.isItemInRoom(currentRoom)){
+                System.out.println("There might be something here...");
                 String item = room.getItemInRoom(currentRoom);
+                System.out.println("You found some " + item + "! It has been added to your inventory.");
                 player.addToInventory(item);
             }
             else {

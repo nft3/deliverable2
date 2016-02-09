@@ -60,12 +60,20 @@ public class Room {
     
     // Returns true if a North room exists
     public boolean doesNorthRoomExist(int currentRoom){
-        return roomList.contains(roomList.get(currentRoom + 1));
+        try{
+            return roomList.contains(roomList.get(currentRoom + 1));
+        } catch(IndexOutOfBoundsException e){
+            return false;
+        }
     }
     
     // Returns true if a South room exists
     public boolean doesSouthRoomExist(int currentRoom){
-        return roomList.contains(roomList.get(currentRoom - 1));
+        try{
+            return roomList.contains(roomList.get(currentRoom - 1));
+        } catch(ArrayIndexOutOfBoundsException e){
+            return false;
+        }
     }
     
     // Prints out to the user what room they are in.
@@ -106,6 +114,6 @@ public class Room {
     
     // Print out to the user the furniture of the current room that we are in.
     public void printFurnitureString(int currentRoom){
-        System.out.println("It has a " + roomList.get(currentRoom) + " " + furniture.get(roomList.get(currentRoom)) + ".");
+        System.out.println("It has a " + furniture.get(roomList.get(currentRoom)) + " in it.");
     }
 }

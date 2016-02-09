@@ -22,11 +22,13 @@ public class Deliverable2 {
         while(true) {
             // Print out what room you are in, furnature description and what
             // door leaves out of the room.
+            System.out.println("");
             room.printRoomString(player.getCurrentRoom());
             room.printFurnitureString(player.getCurrentRoom());
             room.printDoors(player.getCurrentRoom());
             
             // Prompt the user to enter and instruction and read it in via stdin.
+            System.out.println("");
             System.out.println(" INSTRUCTIONS (N,S,L,I,D) > ");
             nextCommand = in.nextLine();
                      

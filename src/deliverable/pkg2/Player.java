@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Player {
     // Instance variables about someone who is playing this game
-    static int currentRoom; 
+    private int currentRoom; 
     ArrayList<String> inventory;
     
     // Constructor
@@ -22,7 +22,7 @@ public class Player {
     
     // Input a direction and room that they are currently in.
     // Checks if that movement is valid or not before updating 
-    public void updateRoom(String direction, Room room){
+    public void updateRoom(String direction, Room room){       
         if(direction.equalsIgnoreCase("N") && room.doesNorthRoomExist(currentRoom)){
             currentRoom += 1;
         }
@@ -40,38 +40,38 @@ public class Player {
     }
     
     // Print the current contents of the inventory.
-    public void printInventory(){
+    public void printInventory(){             
+        boolean coffee = false, sugar = false, cream = false;
+        
         // Iterate over the inventory ArrayList.
         for(String str : inventory){
             // Determine if they have coffee in their inventory yet or not
             if(str.equalsIgnoreCase("Coffee")){
                 System.out.println("You have COFFEE in your inventory.");
-                continue;
+                coffee = true;
             }
-            else{
-                System.out.println("You do not have COFFEE in your inventory.");
-            }
-            
             // Check if they have sugar in their inventory or not.
-            if(str.equalsIgnoreCase("Sugar")){
-                System.out.println("You have SUGAR in your inventory");
-                continue;
+            else if(str.equalsIgnoreCase("Sugar")){
+                System.out.println("You have SUGAR in your inventory.");
+                sugar = true;
             }
-            else{
-                System.out.println(" You do not have SUGAR in your inventory.");
-            }
-            
             // Check if they have cream in their inventory yet or not.
-            if(str.equalsIgnoreCase("Cream")){
+            else if(str.equalsIgnoreCase("Cream")){
                 System.out.println("You have CREAM in your inventory.");
-            }
-            else{
-                System.out.println("You do not have CREAM in your inventory.");
+                cream = true;
             }
         }
         
-        // Print a blank line here just for formatting reasons.
-        System.out.println("");
+        // If a boolean flag is still false, we don't have it.
+        if(!coffee){
+            System.out.println("You do not have COFFEE in your inventory.");
+        }
+        if(!sugar){
+            System.out.println("You do not have SUGAR in your inventory.");
+        }
+        if(!cream){
+            System.out.println("You do not have CREAM in your inventory.");
+        }     
     }
     
     public boolean haveAllIngredients(){
