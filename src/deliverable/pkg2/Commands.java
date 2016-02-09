@@ -40,7 +40,6 @@ public class Commands {
         System.out.println("'I' : Used to check the inventory of coffee ingredients a player currently has.");
         System.out.println("'H' : Used to display the this help menu.");
         System.out.println("'D' : Used to drink the current contents of your inventory.");
-        System.out.println("");
     }
     
     public void decideCommand(String command, Room room, Player player){

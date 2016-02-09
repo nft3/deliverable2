@@ -3,6 +3,9 @@ package deliverable.pkg2;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 /**
  *
  * @author Nicholas Treu
@@ -78,15 +81,34 @@ public class Room {
     
     // Prints out to the user what room they are in.
     public void printRoomString(int currentRoom){
-        System.out.println("You see a " + roomList.get(currentRoom) + " room.");
+        // Proper use of 'a' and 'an' if an adjective begins with a vowel or not/
+        Set<Character> vowelList = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+        
+        if(vowelList.contains(Character.toLowerCase(roomList.get(currentRoom).charAt(0)))){
+            System.out.println("You see an " + roomList.get(currentRoom) + " room.");
+        } else {
+            System.out.println("You see a " + roomList.get(currentRoom) + " room.");
+        }
     }
     
     public void printDoors(int currentRoom){
+         // Proper use of 'a' and 'an' if an adjective begins with a vowel or not/
+        Set<Character> vowelList = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+        
         if(doesNorthRoomExist(currentRoom)){
-            System.out.println("A " + doorAdjectives.get(currentRoom + 1) + " door leads North.");
+            if(vowelList.contains(Character.toLowerCase(doorAdjectives.get(currentRoom + 1).charAt(0)))){
+                System.out.println("An " + doorAdjectives.get(currentRoom + 1) + " door leads North.");
+            } else {
+                System.out.println("A " + doorAdjectives.get(currentRoom + 1) + " door leads North.");
+            }
         }
         if(doesSouthRoomExist(currentRoom)){
-            System.out.println("A " + doorAdjectives.get(currentRoom - 1) + " door leads South.");
+            if(vowelList.contains(Character.toLowerCase(doorAdjectives.get(currentRoom - 1).charAt(0)))){
+                System.out.println("An " + doorAdjectives.get(currentRoom - 1) + " door leads South.");
+            }
+            else{
+                System.out.println("A " + doorAdjectives.get(currentRoom - 1) + " door leads South.");
+            }
         }
     }
     

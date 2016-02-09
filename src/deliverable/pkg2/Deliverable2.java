@@ -29,7 +29,7 @@ public class Deliverable2 {
             
             // Prompt the user to enter and instruction and read it in via stdin.
             System.out.println("");
-            System.out.println(" INSTRUCTIONS (N,S,L,I,D) > ");
+            System.out.println(" INSTRUCTIONS (N,S,L,I,H,D) > ");
             nextCommand = in.nextLine();
                      
             // Now, we will decide what will happen on each case of the
