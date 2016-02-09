@@ -11,13 +11,12 @@ public class Room {
 
     // Instance variables for attributes of a room
     private final ArrayList<String> roomList;
+    private final ArrayList<String> doorAdjectives;
     private final Map<String, String> furniture;
     private final Map<String, String> items;
     
     // Constructor
     public Room() {
-        // Instantiate the current room value to 0 to start.
-               
         // Add some adjectives to describe the room to roomList.
         roomList = new ArrayList<>();
         roomList.add("Pleasant");
@@ -27,8 +26,17 @@ public class Room {
         roomList.add("Meretricious");
         roomList.add("Zealous");
         
+        // Add some door adjectives.
+        doorAdjectives = new ArrayList<>();
+        doorAdjectives.add("Bulky");
+        doorAdjectives.add("Teeny Tiny");
+        doorAdjectives.add("Aqua");
+        doorAdjectives.add("Massive");
+        doorAdjectives.add("Eloquent");
+        doorAdjectives.add("Intimidating");
+        
         // Map the rooms to an piece of furnature.
-        furniture = new HashMap<String, String>(); 
+        furniture = new HashMap<>(); 
         furniture.put(roomList.get(0), "Sofa");
         furniture.put(roomList.get(1), "Closet");
         furniture.put(roomList.get(2), "Table");
@@ -38,7 +46,7 @@ public class Room {
         
         // Map three rooms containing coffee, cream and sugar.
         // Just hardcode three rooms for simplicity.
-        items = new HashMap<String, String>();
+        items = new HashMap<>();
         items.put(roomList.get(1), "Coffee");
         items.put(roomList.get(3), "Cream");
         items.put(roomList.get(5), "Sugar");
@@ -62,7 +70,16 @@ public class Room {
     
     // Prints out to the user what room they are in.
     public void printRoomString(int currentRoom){
-        System.out.println("You are in the " + roomList.get(currentRoom) + " room.");
+        System.out.println("You see a " + roomList.get(currentRoom) + " room.");
+    }
+    
+    public void printDoors(int currentRoom){
+        if(doesNorthRoomExist(currentRoom)){
+            System.out.println("A " + doorAdjectives.get(currentRoom + 1) + " door leads North.");
+        }
+        if(doesSouthRoomExist(currentRoom)){
+            System.out.println("A " + doorAdjectives.get(currentRoom - 1) + " door leads South.");
+        }
     }
     
     // Returns true if there is an item in the room
@@ -71,18 +88,16 @@ public class Room {
     }
     
     // Returns the String of the item in the room, if it exists.
+    // If it is not in the room, return null.
     public String getItemInRoom(int currentRoom){
-        if(isItemInRoom(currentRoom)){
-            return items.get(roomList.get(currentRoom));
-        }
+        return items.get(roomList.get(currentRoom));
         
-        return null;
     }
     
     // Print out to the user if there is an item in the room or not.   
     public void printItemString(int currentRoom){
-        if(items.containsKey(roomList.get(currentRoom))){
-            System.out.println("You found " + items.get(currentRoom) + "!");
+        if(isItemInRoom(currentRoom)){
+            System.out.println("You found " + getItemInRoom(currentRoom) + "!");
         }
         else {
             System.out.println("You found nothing out of the ordinary in this room.");
@@ -91,6 +106,6 @@ public class Room {
     
     // Print out to the user the furniture of the current room that we are in.
     public void printFurnitureString(int currentRoom){
-        System.out.println("This room contains a " + furniture.get(currentRoom));
+        System.out.println("It has a " + roomList.get(currentRoom) + " " + furniture.get(roomList.get(currentRoom)) + ".");
     }
 }
