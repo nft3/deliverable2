@@ -17,6 +17,7 @@ public class Room {
     private final ArrayList<String> doorAdjectives;
     private final Map<String, String> furniture;
     private final Map<String, String> items;
+    private final Map<String, Boolean> itemsFound;
     
     // Constructor
     public Room() {
@@ -53,6 +54,11 @@ public class Room {
         items.put(roomList.get(1), "Coffee");
         items.put(roomList.get(3), "Cream");
         items.put(roomList.get(5), "Sugar");
+        
+        itemsFound = new HashMap<>();
+        itemsFound.put(roomList.get(1), false);
+        itemsFound.put(roomList.get(3), false);
+        itemsFound.put(roomList.get(5), false);
     }
       
     // Check to see if the adjective that describes a room is in our
@@ -121,7 +127,10 @@ public class Room {
     // If it is not in the room, return null.
     public String getItemInRoom(int currentRoom){
         return items.get(roomList.get(currentRoom));
-        
+    }
+    
+    public void itemFound(String room){
+        itemsFound.put(room, true);
     }
     
     // Print out to the user if there is an item in the room or not.   

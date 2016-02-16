@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Player {
     // Instance variables about someone who is playing this game
-    private int currentRoom; 
+    public int currentRoom; 
     ArrayList<String> inventory;
     
     // Constructor
